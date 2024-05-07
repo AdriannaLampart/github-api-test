@@ -1,6 +1,6 @@
 //cypress/e2e/1-getting-started/cypress_api_tc.cy.js
 describe("GET, https://api.github.com/users/octocat", () => {
-    it("Getting users data", () => {
+    it("Getting user data", () => {
         cy.request("GET", "https://api.github.com/users/octocat").then((response) => {
             // Check the response status
             expect(response.status).to.equal(200);
