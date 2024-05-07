@@ -17,7 +17,7 @@
 							"    pm.environment.set('name', pm.response.json().name);\r",
 							"}\r",
 							"\r",
-							"//Check the status of the response - test status 200 OK\r",
+							"//Check the status of the response - status 200 OK\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
