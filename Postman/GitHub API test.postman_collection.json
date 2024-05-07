@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "8b1c44e0-f487-444c-a14d-f26639cfe218",
+		"name": "GitHub API test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get user info for \"octocat\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Environments variable for 'name' json value\r",
+							"if (pm.response.code === 200){\r",
+							"    pm.environment.set('name', pm.response.json().name);\r",
+							"}\r",
+							"\r",
+							"//Check the status of the response - test status 200 OK\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Check if the login from the response matches string\r",
+							"\r",
+							"pm.test(\"Login value checked\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.login).to.eql(\"octocat\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/users/octocat",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"octocat"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
