@@ -2,25 +2,25 @@
 describe("GET, https://api.github.com/users/octocat", () => {
     it("Getting users data", () => {
         cy.request("GET", "https://api.github.com/users/octocat").then((response) => {
-            // Weryfikacja statusu odpowiedzi
+            // Check the response status
             expect(response.status).to.equal(200);
 
-            // Weryfikacja loginu użytkownika
+            // Check if the user login value matches string
             expect(response.body.login).to.eq("octocat");
 
-            //Weryfikacja czy użytkownik posiada id
+            //Chech if the user Id value is not null
             expect(response.body.id).to.be.not.null;
 
-            //Weryfikacji lokalizacji użytkownika
+            //Check if the localization value matches the string
             expect(response.body.location).to.eq("San Francisco");
 
-            //Weryfikacja emaila czy wynosi null
+            //Check if the email value is null
             expect(response.body.email).to.be.null;
 
-            // Weryfikacja liczby publicznych repozytoriów
+            // Check if the public repository is greater than 0
             expect(response.body.public_repos).to.be.greaterThan(0);
 
-            //Weryfikacja czy url zawiera podany string
+            //Check if the url value includes the string
             expect(response.body.url).to.include("https://api.github.com")
         });
     });
